@@ -62,7 +62,6 @@ class App extends Component {
 
   onLoadMore = () => {
     this.getData();
-    this.setState({ isLoading: true });
   };
 
   onHandleClickImage = data => {

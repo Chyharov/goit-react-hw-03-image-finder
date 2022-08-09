@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import s from './Searchbar.module.css';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Searchbar extends Component {
   state = {
@@ -11,6 +13,13 @@ class Searchbar extends Component {
     e.preventDefault();
     this.props.onSubmit(this.state.text);
     this.reset();
+    const { text } = this.state;
+    if (text === '') {
+      toast.error('Please, input your query for search!', {
+        autoClose: 5000,
+      });
+      return;
+    }
   };
   
   onHadleChange = e => {
